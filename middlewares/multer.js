@@ -34,7 +34,7 @@ const upload = multer({
     connectionString: process.env.STRACCOUNT_CONNECTION,
     accessKey: process.env.STRACCOUNT_ACCESS_KEY,
     accountName: process.env.STRACCOUNT_ACCOUNT_NAME,
-    containerName: process.env.CONTAINER_NAME,
+    containerName: process.env.STRACCOUNT_CONTAINER_NAME,
     containerAccessLevel: "blob",
     blobName: resolveBlobName,
     metadata: resolveMetadata,

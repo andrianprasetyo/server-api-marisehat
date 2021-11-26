@@ -21,14 +21,14 @@ const options = {
       url: "https://spdx.org/licenses/MIT.html",
     },
     contact: {
-      name: "IAP",
-      email: "iap@gmail.com",
+      name: "Andrian P",
+      email: "andrianprasetyo29@gmail.com",
     },
   },
   security: [{ bearerAuth: [] }],
   servers: [
     {
-      url: "http://localhost:3000/api/marisehat/",
+      url: process.env.BASE_URL,
     },
   ],
   apis: ["./routes/api.js"],
