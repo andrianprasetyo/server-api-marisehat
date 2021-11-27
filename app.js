@@ -5,6 +5,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+
 // Swagger
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
@@ -31,7 +32,7 @@ const options = {
       url: process.env.BASE_URL,
     },
   ],
-  apis: ["./routes/api.js"],
+  apis: [`${__dirname}/routes/api.js`],
 };
 const specs = swaggerJsDoc(options);
 

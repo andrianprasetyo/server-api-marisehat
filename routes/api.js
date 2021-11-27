@@ -104,271 +104,285 @@ const { isAuth } = require("../middlewares/isAuth");
 
 /**
  * @swagger
- *  tags:
- *    name: Users
+ * tags:
+ *   name: Users
  */
 
 /**
  * @swagger
- * /auth/signup:
- *   post:
- *     summary: Returns result of users signup
- *     tags: [Users]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *                 example: youremail@emailprovider.com
- *               password:
- *                 type: string
- *                 example: yourpasswordhere
- *
- *     responses:
- *       200:
- *         description: Data of the Users
+ * paths:
+ *   /auth/signup:
+ *     post:
+ *       summary: Returns result of users signup
+ *       tags: [Users]
+ *       requestBody:
+ *         required: true
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Users'
+ *               type: object
+ *               properties:
+ *                 email:
+ *                   type: string
+ *                   example: youremail@emailprovider.com
+ *                 password:
+ *                   type: string
+ *                   example: yourpasswordhere
  *
- *       422:
- *        description: Incorrect input of user email
- *       401:
- *        description: Email already registered
- *
- *
- * /auth/signin:
- *   post:
- *     summary: Returns result of users signin
- *     tags: [Users]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *                 example: youremail@emailprovider.com
- *               password:
- *                 type: string
- *                 example: yourpasswordhere
- *
- *     responses:
- *       200:
- *         description: Data of the Users
- *         content:
- *            application/json:
- *              schema:
- *                type: object
- *                properties:
- *                  token:
- *                    type: string
- *                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3Rjb2JhY29iYUBnbWFpbC5jb20iLCJ1c2VySWQiOiI2MTllNWI1Nzc4N2UzNjljZTI2ZTE3ZjIiLCJpYXQiOjE2Mzc5MDAwODcsImV4cCI6MTYzNzkwMzY4N30.437A4rLV2B68wMbgU1EE0eZZL1PyvkZbUhxNW6D_2QE
- *                  userId:
- *                    type: string
- *                    example: 619b7109f2e3b309460b0c3d
- *
- *       422:
- *        description: Incorrect input of user either email or password
- *       401:
- *        description: Invalid Email
- *
- */
-
-/**
- * @swagger
- *  tags:
- *    name: Patients
- */
-
-/**
- * @swagger
- * /api/marisehat/patients:
- *   get:
- *     summary: Returns list of patients
- *     tags: [Patients]
- *     security:
- *     - jwt: []
- *     responses:
- *       200:
- *         description: List of the Patients
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Patients'
- *
- *       401:
- *        description: User not authenticated
- *
- *   post:
- *     summary: Returns uploaded data of patients
- *     tags: [Patients]
- *     requestBody:
- *       required: true
- *       content:
- *         multipart/form-data:
- *           schema:
- *             type: object
- *             properties:
- *               fullName:
- *                 type: string
- *                 example: Putin
- *               age:
- *                 type: number
- *                 example: 99
- *               gender:
- *                 type: string
- *                 example: M
- *               address:
- *                 type: string
- *                 example: Putins Palace
- *               diagnosisDescription:
- *                 type: string
- *                 example: Abnormal Syndrom
- *               diagnosisTime:
- *                 type: string
- *                 format: date
- *                 example: 1970-01-01T06:08:32.021Z
- *               diagnosisImageUrl:
+ *       responses:
+ *         200:
+ *           description: Data of the Users
+ *           content:
+ *             application/json:
+ *               schema:
  *                 type: array
  *                 items:
- *                   type: string
- *                   format: binary
- *     security:
- *       - jwt: []
- *     responses:
- *       200:
- *         description: Data of the Patients
+ *                   $ref: '#/components/schemas/Users'
+ *
+ *         422:
+ *          description: Incorrect input of user email
+ *         401:
+ *          description: Email already registered
+ *
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /auth/signin:
+ *     post:
+ *       summary: Returns result of users signin
+ *       tags: [Users]
+ *       requestBody:
+ *         required: true
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Patients'
+ *               type: object
+ *               properties:
+ *                 email:
+ *                   type: string
+ *                   example: youremail@emailprovider.com
+ *                 password:
+ *                   type: string
+ *                   example: yourpasswordhere
  *
- *       401:
- *        description: User not authenticated
+ *       responses:
+ *         200:
+ *           description: Data of the Users
+ *           content:
+ *              application/json:
+ *                schema:
+ *                  type: object
+ *                  properties:
+ *                    token:
+ *                      type: string
+ *                      example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3Rjb2JhY29iYUBnbWFpbC5jb20iLCJ1c2VySWQiOiI2MTllNWI1Nzc4N2UzNjljZTI2ZTE3ZjIiLCJpYXQiOjE2Mzc5MDAwODcsImV4cCI6MTYzNzkwMzY4N30.437A4rLV2B68wMbgU1EE0eZZL1PyvkZbUhxNW6D_2QE
+ *                    userId:
+ *                      type: string
+ *                      example: 619b7109f2e3b309460b0c3d
  *
- * /api/marisehat/patients/edit/{id}:
- *    put:
- *     summary: Returns edited data of patients by id
- *     tags: [Patients]
- *     parameters:
- *       - name: id
- *         in: path
- *         schema:
- *           type: string
- *         required: true
- *         description: the id of patients
- *     requestBody:
- *       required: true
- *       content:
- *         multipart/form-data:
- *           schema:
- *             type: object
- *             properties:
- *               fullName:
- *                 type: string
- *                 example: Putin
- *               age:
- *                 type: number
- *                 example: 99
- *               gender:
- *                 type: string
- *                 example: M
- *               address:
- *                 type: string
- *                 example: Putins Palace
- *               diagnosisDescription:
- *                 type: string
- *                 example: Abnormal Syndrom
- *               diagnosisTime:
- *                 type: string
- *                 format: date
- *                 example: 1970-01-01T06:08:32.021Z
- *               diagnosisImageUrl:
+ *         422:
+ *          description: Incorrect input of user either email or password
+ *         401:
+ *          description: Invalid Email
+ *
+ */
+
+/**
+ * @swagger
+ * tags:
+ *   name: Patients
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /api/marisehat/patients:
+ *     get:
+ *       summary: Returns list of patients
+ *       tags: [Patients]
+ *       security:
+ *       - jwt: []
+ *       responses:
+ *         200:
+ *           description: List of the Patients
+ *           content:
+ *             application/json:
+ *               schema:
  *                 type: array
  *                 items:
- *                   type: string
- *                   format: binary
- *     security:
- *       - jwt: []
- *     responses:
- *       200:
- *         description: Data of the Patients
+ *                   $ref: '#/components/schemas/Patients'
+ *
+ *         401:
+ *          description: User not authenticated
+ *
+ *     post:
+ *       summary: Returns uploaded data of patients
+ *       tags: [Patients]
+ *       requestBody:
+ *         required: true
  *         content:
- *           application/json:
+ *           multipart/form-data:
  *             schema:
- *               type: array
- *               items:
+ *               type: object
+ *               properties:
+ *                 fullName:
+ *                   type: string
+ *                   example: Putin
+ *                 age:
+ *                   type: number
+ *                   example: 99
+ *                 gender:
+ *                   type: string
+ *                   example: M
+ *                 address:
+ *                   type: string
+ *                   example: Putins Palace
+ *                 diagnosisDescription:
+ *                   type: string
+ *                   example: Abnormal Syndrom
+ *                 diagnosisTime:
+ *                   type: string
+ *                   format: date
+ *                   example: 1970-01-01T06:08:32.021Z
+ *                 diagnosisImageUrl:
+ *                   type: array
+ *                   items:
+ *                     type: string
+ *                     format: binary
+ *       security:
+ *         - jwt: []
+ *       responses:
+ *         200:
+ *           description: Data of the Patients
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: array
+ *                 items:
+ *                   $ref: '#/components/schemas/Patients'
+ *
+ *         401:
+ *          description: User not authenticated
+ *
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /api/marisehat/patients/edit/{id}:
+ *      put:
+ *       summary: Returns edited data of patients by id
+ *       tags: [Patients]
+ *       parameters:
+ *         - name: id
+ *           in: path
+ *           schema:
+ *             type: string
+ *           required: true
+ *           description: the id of patients
+ *       requestBody:
+ *         required: true
+ *         content:
+ *           multipart/form-data:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 fullName:
+ *                   type: string
+ *                   example: Putin
+ *                 age:
+ *                   type: number
+ *                   example: 99
+ *                 gender:
+ *                   type: string
+ *                   example: M
+ *                 address:
+ *                   type: string
+ *                   example: Putins Palace
+ *                 diagnosisDescription:
+ *                   type: string
+ *                   example: Abnormal Syndrom
+ *                 diagnosisTime:
+ *                   type: string
+ *                   format: date
+ *                   example: 1970-01-01T06:08:32.021Z
+ *                 diagnosisImageUrl:
+ *                   type: array
+ *                   items:
+ *                     type: string
+ *                     format: binary
+ *       security:
+ *         - jwt: []
+ *       responses:
+ *         200:
+ *           description: Data of the Patients
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: array
+ *                 items:
+ *                   $ref: '#/components/schemas/Patients'
+ *
+ *         401:
+ *          description: User not authenticated
+ *
+ */
+
+/**
+ * @swagger
+ * paths:
+ *   /api/marisehat/patients/{id}:
+ *      get:
+ *        summary: Return a patients by id
+ *        tags: [Patients]
+ *        parameters:
+ *         - name: id
+ *           in: path
+ *           schema:
+ *             type: string
+ *           required: true
+ *           description: the id of patients
+ *        security:
+ *        - jwt: []
+ *        responses:
+ *          200:
+ *            description: Show a patients
+ *            content:
+ *             application/json:
+ *               schema:
  *                 $ref: '#/components/schemas/Patients'
  *
- *       401:
- *        description: User not authenticated
+ *          401:
+ *            description: User not authenticated
  *
+ *      delete:
+ *        summary: Delete a patients by id
+ *        tags: [Patients]
+ *        parameters:
+ *         - name: id
+ *           in: path
+ *           schema:
+ *             type: string
+ *           required: true
+ *           description: the id of patients
+ *        security:
+ *        - jwt: []
+ *        responses:
+ *          200:
+ *            description: Delete a patients
+ *            content:
+ *              application/json:
+ *                schema:
+ *                  type: object
+ *                  properties:
+ *                    message:
+ *                      type: string
+ *                      example: Patients Data has been deleted
  *
- *
- * /api/marisehat/patients/{id}:
- *    get:
- *      summary: Return a patients by id
- *      tags: [Patients]
- *      parameters:
- *       - name: id
- *         in: path
- *         schema:
- *           type: string
- *         required: true
- *         description: the id of patients
- *      security:
- *      - jwt: []
- *      responses:
- *        200:
- *          description: Show a patients
- *          content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Patients'
- *
- *        401:
- *          description: User not authenticated
- *
- *    delete:
- *      summary: Delete a patients by id
- *      tags: [Patients]
- *      parameters:
- *       - name: id
- *         in: path
- *         schema:
- *           type: string
- *         required: true
- *         description: the id of patients
- *      security:
- *      - jwt: []
- *      responses:
- *        200:
- *          description: Delete a patients
- *          content:
- *            application/json:
- *              schema:
- *                type: object
- *                properties:
- *                  message:
- *                    type: string
- *                    example: Patients Data has been deleted
- *
- *        401:
- *          description: User not authenticated
+ *          401:
+ *            description: User not authenticated
  *
  */
 
